@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2015 Chroma
+     Copyright (C) 2016 Minimal
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -18,4 +18,18 @@
   <!-- Package Manager -->
   <java-symbol type="array" name="config_disabledComponents" />
 
+  <!-- Power menu reboot -->
+  <java-symbol name="reboot_confirm" type="string" />
+  <java-symbol name="reboot_title" type="string" />
+  <java-symbol name="ic_lock_power_reboot" type="drawable" />
+  <java-symbol name="global_action_reboot" type="string" />
+  
+  <!-- Config Power Menu -->
+   <java-symbol type="drawable" name="ic_lock_reboot" />
+   <java-symbol type="string" name="global_action_reboot" />
+   <java-symbol type="string" name="reboot_reboot" />
+   <java-symbol type="array" name="shutdown_reboot_actions" />
+   <java-symbol type="array" name="shutdown_reboot_options" />
+   <java-symbol type="string" name="reboot_system" />
+   <java-symbol type="string" name="reboot_progress" />
 </resources>
