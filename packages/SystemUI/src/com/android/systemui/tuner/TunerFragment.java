@@ -52,11 +52,7 @@ public class TunerFragment extends PreferenceFragment {
 
     public static final String SETTING_SEEN_TUNER_WARNING = "seen_tuner_warning";
 
-    private static final int MENU_REMOVE = Menu.FIRST + 1;
-
     private final SettingObserver mSettingObserver = new SettingObserver();
-
-    private SwitchPreference mBatteryPct;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,13 +164,6 @@ public class TunerFragment extends PreferenceFragment {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void updateBatteryPct() {
-        mBatteryPct.setOnPreferenceChangeListener(null);
-        mBatteryPct.setChecked(System.getInt(getContext().getContentResolver(),
-                SHOW_PERCENT_SETTING, 0) != 0);
-        mBatteryPct.setOnPreferenceChangeListener(mBatteryPctChange);
     }
 
     private final class SettingObserver extends ContentObserver {
