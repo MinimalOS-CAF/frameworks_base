@@ -40,6 +40,7 @@ import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IPowerManager;
 import android.os.Message;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -93,6 +94,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
     /* Valid settings for global actions keys.
      * see config.xml config_globalActionList */
     private static final String GLOBAL_ACTION_KEY_POWER = "power";
+    private static final String GLOBAL_ACTION_KEY_REBOOT = "reboot";
     private static final String GLOBAL_ACTION_KEY_AIRPLANE = "airplane";
     private static final String GLOBAL_ACTION_KEY_BUGREPORT = "bugreport";
     private static final String GLOBAL_ACTION_KEY_SILENT = "silent";
@@ -340,6 +342,16 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
         private RebootAction() {
             super(com.android.internal.R.drawable.ic_lock_reboot,
                 R.string.global_action_reboot);
+        }
+
+        @Override
+        public boolean onLongPress() {
+            UserManager um = (UserManager) mContext.getSystemService(Context.USER_SERVICE);
+            if (!um.hasUserRestriction(UserManager.DISALLOW_SAFE_BOOT)) {
+                mWindowManagerFuncs.rebootSafeMode(true);
+                return true;
+            }
+            return false;
         }
 
         @Override
